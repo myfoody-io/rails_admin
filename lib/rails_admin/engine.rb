@@ -9,6 +9,11 @@ require 'remotipart'
 
 module RailsAdmin
   class Engine < Rails::Engine
+    middleware.use Rack::ETag
+    middleware.use ActionDispatch::Cookies
+    middleware.use ActionDispatch::Session::CookieStore
+    middleware.use Rack::MethodOverride
+    middleware.use ActionDispatch::Flash
     isolate_namespace RailsAdmin
 
     config.action_dispatch.rescue_responses['RailsAdmin::ActionNotAllowed'] = :forbidden
