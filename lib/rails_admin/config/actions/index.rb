@@ -59,7 +59,7 @@ module RailsAdmin
                 if params[:send_data]
                   send_data output, filename: "#{params[:model_name]}_#{DateTime.now.strftime('%Y-%m-%d_%Hh%Mm%S')}.json"
                 else
-                  render json: output, root: false
+                  render json: output, root: false, adapter: :attributes
                 end
               end
 
